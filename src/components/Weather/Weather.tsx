@@ -29,7 +29,6 @@ export const Weather = () => {
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=ru&appid=66537799e2af866eeee53d276ac3fcc1`
     )
     const dataWeather = await respWeather.json()
-    console.log(dataWeather)
     setWeater(dataWeather)
   }
 
@@ -104,7 +103,6 @@ export const Weather = () => {
 
   return (
     <div className={cls.weather}>
-      {console.log(date.getDate())}
       <InputCity cityName={getWeather} />
       {showWeather()}
     </div>
