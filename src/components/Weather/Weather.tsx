@@ -41,13 +41,13 @@ export const Weather = () => {
 
   const dayOfWeek = (date: number) => {
     const day = [
+      'Воскресенье',
       'Понедельник',
       'Вторник',
       'Среда',
       'Четверг',
       'Пятница',
       'Суббота',
-      'Воскресенье',
     ]
     return day[date]
   }
@@ -88,7 +88,7 @@ export const Weather = () => {
           </div>
           <div>
             <div className={cls.date}>
-              <span>{dayOfWeek(date.getDate())}, </span>
+              <span>{dayOfWeek(date.getDay())}, </span>
               <span>{date.toLocaleTimeString()}</span>
               <p>{weather?.weather[0].description}</p>
             </div>
@@ -104,6 +104,7 @@ export const Weather = () => {
 
   return (
     <div className={cls.weather}>
+      {console.log(date.getDate())}
       <InputCity cityName={getWeather} />
       {showWeather()}
     </div>
