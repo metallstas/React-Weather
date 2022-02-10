@@ -2,26 +2,26 @@ import React, { useState } from 'react'
 import cls from './InputCity.module.css'
 
 interface IInputCity {
-  cityName: (cityName: string) => void
+  onChangeCityName: (cityName: string) => void
 }
 
-export const InputCity = ({ cityName }: IInputCity) => {
+export const InputCity = ({ onChangeCityName }: IInputCity) => {
   const [city, setCity] = useState<string>('')
   const [checkCity, setCheckCity] = useState(false)
 
   const sendByKeyboard = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
-      handlerCity()
+      handleChangeCity()
     }
   }
 
-  const handlerCity = () => {
+  const handleChangeCity = () => {
     if (!city) {
       setCheckCity(true)
     } else {
       setCheckCity(false)
     }
-    cityName(city)
+    onChangeCityName(city)
     setCity('')
   }
 
@@ -32,7 +32,7 @@ export const InputCity = ({ cityName }: IInputCity) => {
         onChange={(e) => setCity(e.target.value)}
         onKeyPress={(e) => sendByKeyboard(e)}
       />
-      <button onClick={handlerCity}>Поиск</button>
+      <button onClick={handleChangeCity}>Поиск</button>
       {checkCity ? <p>Введите название города</p> : null}
     </div>
   )

@@ -21,15 +21,15 @@ interface IWeather {
 }
 
 export const Weather = () => {
-  const [weather, setWeater] = useState<IWeather>()
-  const [celcii, setCelcii] = useState(true)
+  const [weather, setWeather] = useState<IWeather>()
+  const [isCelsius, setIsCelsius] = useState(true)
 
   const getWeather = async (city = 'Minsk') => {
     const respWeather = await fetch(
       `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&lang=ru&appid=66537799e2af866eeee53d276ac3fcc1`
     )
     const dataWeather = await respWeather.json()
-    setWeater(dataWeather)
+    setWeather(dataWeather)
   }
 
   useEffect(() => {
@@ -51,16 +51,16 @@ export const Weather = () => {
     return day[date]
   }
 
-  const converteToFaringate = (tempCelcii: number) => {
-    return ((tempCelcii * 9) / 5 + 32).toFixed(0)
+  const converteToFaringate = (tempCelsius: number) => {
+    return ((tempCelsius * 9) / 5 + 32).toFixed(0)
   }
 
   const handlerFaringate = () => {
-    setCelcii(false)
+    setIsCelsius(false)
   }
 
   const handlerCelsii = () => {
-    setCelcii(true)
+    setIsCelsius(true)
   }
 
   const showWeather = () => {
@@ -75,10 +75,10 @@ export const Weather = () => {
         <div className={cls.weatherDetails}>
           <div className={cls.tempWrap}>
             <p className={cls.temp}>
-              {celcii
+              {isCelsius
                 ? weather.main.temp.toFixed(0)
                 : converteToFaringate(weather.main.temp)}
-              <small>{celcii ? '°C' : '°F'}</small>
+              <small>{isCelsius ? '°C' : '°F'}</small>
             </p>
             <div className={cls.units}>
               <span onClick={handlerFaringate}>°F</span>
@@ -103,7 +103,7 @@ export const Weather = () => {
 
   return (
     <div className={cls.weather}>
-      <InputCity cityName={getWeather} />
+      <InputCity onChangeCityName={getWeather} />
       {showWeather()}
     </div>
   )
