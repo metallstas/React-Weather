@@ -1,0 +1,62 @@
+.weather {
+  font-size: 30px;
+  color: #fff;
+  text-shadow: 1px 1px 2px #000;
+}
+
+.nameCity {
+  font-size: 40px;
+  text-align: left;
+  margin: 5px;
+  padding: 5px;
+}
+
+.weatherDetails {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.temp {
+  position: relative;
+  text-align: left;
+  font-size: 90px;
+  font-weight: 300;
+  margin: 5px;
+  padding: 0px;
+}
+
+.temp small {
+  position: absolute;
+  font-weight: 400;
+  font-size: 30px;
+  top: 10px;
+}
+
+.tempWrap {
+  display: flex;
+  align-items: center;
+}
+
+.units {
+  display: inline;
+  font-size: 40px;
+  margin-left: 40px;
+}
+
+.units span {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.units span:hover {
+  color: #ccc;
+}
+
+.date {
+  font-size: 22px;
+}
+
+.date p {
+  margin-top: 5px;
+}
